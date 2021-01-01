@@ -1,0 +1,21 @@
+* {
+	user-select: none;
+}
+
+.beer-icon {
+	background: transparent;
+}
+
+.main-cont-page {
+	height: 100.0vh;
+	background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
+}
+
+.form-main {
+	margin-top: 1rem;
+	padding: 15px;
+}
+
+.in-w {
+	width: 18vw;
+}

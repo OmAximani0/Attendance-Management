@@ -1,0 +1,54 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.main_root {
+  margin: auto;
+  /* width: 50%; */
+  width: 50vw;
+  /* box-shadow: 0px 1px 6px 0px; */
+  margin-top: 45px;
+  border-radius: 12px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.main {
+  width: 100%;
+}
+
+#login-header{
+  text-align: center;
+  margin-top: 55px;
+}
+
+.btn{
+  margin-top: 20px;
+}
+
+.load-1 {
+  margin-left: 100px;
+  top: 60px;
+}
+
+.show-nav-head {
+  color: gray;
+}
+.show-nav-table {
+  color: lightcoral;
+}
+.show-nav-loader {
+  color: rgb(0, 132, 255);
+}
+
+.cart-cont {
+  width: 100px;
+  height: 100px;
+}
+
+.err-stu-reg {
+  color: red;
+}
