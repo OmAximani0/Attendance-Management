@@ -10,6 +10,7 @@ import {
 import StudentRegister from "./pages/StudentRegister";
 import TeacherRegister from "./pages/TeacherRegister";
 import LogIn from "./pages/LogIn";
+import StudentDashboard from "./pages/StudentDashboard";
 
 import "./components/compo.css";
 import "./pages/pages.css";
@@ -24,6 +25,8 @@ function App() {
             <Route exact path="/" component={LogIn} />
             <Route exact path="/studentRegister" component={StudentRegister} />
             <Route exact path="/teacherRegister" component={TeacherRegister} />
+            <Route exact path="/studentDashboard" component={StudentDashboard}/>
+            <Redirect to="/" />
           </Switch>
         </Router>
       </div>

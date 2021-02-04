@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+
 // * Custom Components
 import Header from "../components/Header";
 import InputField from "../components/InputField";
 import DropDown from "../components/DropDown";
 import Btn from "../components/Button";
 import { SuccessToast, ErrorToast } from "../components/Toast";
+
 // * Other Dependencies
 import { makeStyles } from "@material-ui/core";
 import { useFormik } from "formik";
@@ -84,11 +86,10 @@ const Register = () => {
       sem: "",
     },
     onSubmit: (data) => {
-      // console.log({ data: data });
       axios
         .post("http://127.0.0.1:5000/registerStudent", data)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setState({
             ...state,
             registered: res.data.registered,
@@ -99,7 +100,7 @@ const Register = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           ErrorToast("Problem With API");
         });
     },
@@ -248,7 +249,7 @@ const Register = () => {
             )}
             <br/>
             <br/>
-            <Link to="/">Already Registered? Click Here For LogIn Page.</Link>
+            <Link to="/">Already Registered ?  Click Here For LogIn Page.</Link>
           </form>
         </center>
       </div>

@@ -42,14 +42,14 @@ const TeacherRegister = () => {
       subject: "",
     },
     onSubmit: (data) => {
-	  console.log(data);
+	  // console.log(data);
 	  axios.post('http://127.0.0.1:5000/registerTeacher', data)
 		.then(res => {
 			console.log(res);
 			SuccessToast(res.data.result)
 		})
 		.catch(error => {
-			console.log(error);
+			console.error(error);
 			ErrorToast('Server Not Responding!')
 		})
 	},

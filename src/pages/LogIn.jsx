@@ -1,15 +1,17 @@
 import React from "react";
+
 // * Custom Components
 import Header from "../components/Header";
 import InputField from "../components/InputField";
 import DropDown from "../components/DropDown";
 import Button from "../components/MButton";
 import { SuccessToast, WarningToast, InfoToast, ErrorToast } from "../components/Toast";
+
 // * Other Dependencies
 import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const validSchema = yup.object().shape({
   user_name: yup.string().required("This field is required"),
@@ -20,6 +22,7 @@ const validSchema = yup.object().shape({
 });
 
 const LogIn = () => {
+  localStorage.setItem("LOGGED_IN", false)
   const userType = ["Teacher", "Student", "Admin"];
 
   const formik = useFormik({
@@ -29,15 +32,20 @@ const LogIn = () => {
       user_type: "",
     },
     validationSchema: validSchema,
-    onSubmit: (data) => {
+    onSubmit: data => {
       axios.post('http://127.0.0.1:5000/login', data)
         .then(res => {
-          console.log(res.data)
-          if (res.data.login == true) {
+          // console.log(res.data)
+          if (res.data.login === true) {
             SuccessToast(res.data.message)
+            localStorage.setItem("LOGGED_IN", true)
+            console.log(localStorage.getItem("LOGGED_IN"))
+            window.location = '/studentDashboard'
           }
-          else{
+          else {
+            localStorage.setItem("LOGGED_IN", false)
             WarningToast(res.data.message)
+            console.log(localStorage.getItem("LOGGED_IN"))
             setTimeout(() => {
               InfoToast('Make Sure You Are Registered')
             }, 1500);
@@ -45,6 +53,7 @@ const LogIn = () => {
         })
         .catch(() => {
           ErrorToast('Unable To Connect The Server')
+          localStorage.setItem("LOGGED_IN", false)
         })
     },
   });
@@ -132,7 +141,9 @@ const LogIn = () => {
                   className="my-2"
                 />
               )}
-            {/* <Link to="" >Not Registered? Click Here</Link> */}
+            <br />
+            <br />
+            <Link to="/studentRegister" >Not Registered? Click Here</Link>
           </center>
         </form>
       </div>
